@@ -1,0 +1,21 @@
+def f(x):
+    return 3*x**4 + 4*x**3 - 12*x**2 - 5
+
+def bisection_method(a, b, tol):
+    while (b - a) / 2.0 > tol:
+        midpoint = (a + b) / 2.0
+        if f(midpoint) == 0:
+            return midpoint
+        elif f(a) * f(midpoint) < 0:
+            b = midpoint
+        else:
+            a = midpoint
+    return (a + b) / 2.0
+
+# Встановлюємо початковий інтервал [a, b] і точність tol
+a = -2.0
+b = 2.0
+tolerance = 0.0001
+
+root = bisection_method(a, b, tolerance)
+print("Метод половинного ділення: Корінь знайдений при x =", root)
